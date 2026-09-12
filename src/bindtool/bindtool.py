@@ -500,7 +500,7 @@ class BindTool:
         with open(private_key_path, 'rb') as private_key_file:
             private_key_data = private_key_file.read()
         password = (passphrase.encode('utf-8') if (passphrase) else None)
-        if ((b'-----BEGIN PRIVATE KEY-----' in private_key_data) or (b'-----BEGIN ENCRYPTED PRIVATE KEY-----' in private_key_data)):
+        if ((b'-----BEGIN PRIVATE KEY-----' in private_key_data) or (b'-----BEGIN ENCRYPTED PRIVATE KEY-----' in private_key_data) or (b'-----BEGIN RSA PRIVATE KEY-----' in private_key_data)):
             private_key = load_pem_private_key(private_key_data, password)
         else:
             private_key = load_der_private_key(private_key_data, password)
